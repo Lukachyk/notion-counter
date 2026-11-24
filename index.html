@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+
 <style>
 html, body {
   margin: 0;
@@ -15,14 +17,12 @@ html, body {
 
 p {
   margin: 0 0 8px;
-  color: #222222;
   font-size: 16px;
+  color: #222222;
 }
 
-@media (prefers-color-scheme: dark) {
-  p {
-    color: #ffffff;
-  }
+body.dark p {
+  color: #ffffff;
 }
 
 img {
@@ -32,11 +32,25 @@ img {
 }
 </style>
 </head>
+
 <body>
 <p>👁 Перегляди каталогу</p>
+
 <img
   src="https://hits.sh/spiced-jellyfish-933.notion.site/420e6128f182800989ccf39b7172a5fc.svg"
   alt="Перегляди каталогу"
 >
+
+<script>
+const theme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function updateTheme() {
+  document.body.classList.toggle('dark', theme.matches);
+}
+
+updateTheme();
+theme.addEventListener('change', updateTheme);
+</script>
+
 </body>
 </html>
